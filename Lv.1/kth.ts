@@ -20,7 +20,7 @@ commands의 각 원소는 길이가 3입니다.
 */
 
 const solution12 = (array: number[], commands: any[]) => {
-  let answer: any[] = [];
+  let answer: number[] = [];
   commands.forEach((el) => {
     const [i, j, k] = el;
     // 그냥 sort()로만 정렬하면 테스트케이스 에러 발생, sort()는 기본적으로 string 정렬이기 떄문
