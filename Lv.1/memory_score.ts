@@ -28,7 +28,43 @@ photo[i]의 원소들은 알파벳 소문자로만 이루어져 있습니다.
 photo[i]의 원소들은 중복된 값이 들어가지 않습니다.
 */
 
-const solution13 = (name, yearning, photo) => {
-  let answer = [];
+const solution13 = (name: string[], yearning: number[], photo: any[]) => {
+  let answer: number[] = [];
+  const obj: any = {};
+
+  name.forEach((el: string, idx: number) => {
+    obj[el] = yearning[idx];
+  });
+
+  photo.map((el) => {
+    const r = el.reduce((acc: any, cur: any) => acc + (obj[cur] || 0), 0);
+    answer.push(r);
+  });
+
+  console.log("answer", answer);
   return answer;
 };
+
+solution13(
+  ["may", "kein", "kain", "radi"],
+  [5, 10, 1, 3],
+  [
+    ["may", "kein", "kain", "radi"],
+    ["may", "kein", "brin", "deny"],
+    ["kon", "kain", "may", "coni"],
+  ]
+);
+solution13(
+  ["kali", "mari", "don"],
+  [11, 1, 55],
+  [
+    ["kali", "mari", "don"],
+    ["pony", "tom", "teddy"],
+    ["con", "mona", "don"],
+  ]
+);
+solution13(
+  ["may", "kein", "kain", "radi"],
+  [5, 10, 1, 3],
+  [["may"], ["kein", "deny", "may"], ["kon", "coni"]]
+);
