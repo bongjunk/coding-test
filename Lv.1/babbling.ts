@@ -37,3 +37,29 @@ const solution14 = (babbling: any[]) => {
 
 solution14(["aya", "yee", "u", "maa"]);
 solution14(["ayaye", "uuu", "yeye", "yemawoo", "ayaayaa"]);
+
+const solution22 = (numer1: any, denom1: any, numer2: any, denom2: any) => {
+  let answer: any = [];
+  console.log(Number(`${numer1} / ${denom1} + ${numer2} / ${denom2}`));
+  return answer;
+};
+
+solution22(1, 2, 3, 4);
+solution22(9, 2, 1, 3);
+
+const solution23 = (n: number, numlist: number[]) => {
+  let answer: number[] = [];
+
+  numlist.forEach((el) => {
+    if (el % n === 0) {
+      answer.push(el);
+    }
+  });
+
+  console.log("answer", answer);
+  return answer;
+};
+
+solution23(3, [4, 5, 6, 7, 8, 9, 10, 11, 12]);
+solution23(5, [1, 9, 3, 10, 13, 5]);
+solution23(12, [2, 100, 120, 600, 12, 12]);
