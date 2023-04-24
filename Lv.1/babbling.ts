@@ -63,3 +63,91 @@ const solution23 = (n: number, numlist: number[]) => {
 solution23(3, [4, 5, 6, 7, 8, 9, 10, 11, 12]);
 solution23(5, [1, 9, 3, 10, 13, 5]);
 solution23(12, [2, 100, 120, 600, 12, 12]);
+
+const solution24 = (number: any) => {
+  let answer = 0;
+
+  for (let i = 0; i < number.length; i++) {
+    answer += parseInt(number[i]);
+  }
+
+  // for (let i of number) {
+  //   answer += parseInt(number[i]);
+  // }
+
+  // for (let i in number) {
+  //   answer += parseInt(number[i]);
+  // }
+
+  console.log("answer", answer);
+  return answer;
+};
+
+solution24("123");
+solution24("78720646226947352489");
+
+const solution25 = (num_list: any[]) => {
+  const sum = num_list.reduce((acc, cur) => {
+    return acc + cur;
+  });
+
+  const product = num_list.reduce((acc, cur) => {
+    return acc * cur;
+  });
+
+  if (Math.pow(sum, 2) > product) {
+    return 1;
+  } else {
+    return 0;
+  }
+};
+
+solution25([3, 4, 5, 2, 1]);
+solution25([5, 7, 8, 3]);
+
+const solution26 = (arr1: any, arr2: any) => {
+  let answer = 0;
+
+  const sum1 = arr1.reduce((acc: any, cur: any) => acc + cur);
+  const sum2 = arr2.reduce((acc: any, cur: any) => acc + cur);
+
+  if (arr1.length < arr2.length) {
+    answer = -1;
+  } else if (arr1.length > arr2.length) {
+    answer = 1;
+  } else if (arr1.length === arr2.length && sum1 > sum2) {
+    answer = 1;
+  } else if (arr1.length === arr2.length && sum1 < sum2) {
+    answer = -1;
+  } else {
+    answer = 0;
+  }
+
+  console.log("answer", answer);
+  return answer;
+};
+
+solution26([49, 13], [70, 11, 2]);
+solution26([100, 17, 84, 1], [55, 12, 65, 36]);
+solution26([1, 2, 3, 4, 5], [3, 3, 3, 3, 3]);
+
+const solution27 = (arr: any) => {
+  let answer: any = [];
+  // const includes = (arr: any) => arr.includes(2);
+  if (!arr.includes(2)) answer.push(-1);
+
+  console.log("indexOf", arr.indexOf(arr.includes(2)));
+  // console.log("length", arr.findIndex(includes));
+  console.log("length", arr.includes(2, 2));
+  // for (let i = 0; i < arr.length; i++) {
+  //   console.log("slice", arr.slice(arr.includes(2), arr.includes(2)));
+  //   answer.push(arr.slice(arr.includes(2), arr.includes(2)));
+  // }
+
+  console.log("answer", answer);
+  return answer;
+};
+
+solution27([1, 2, 1, 4, 5, 2, 9]);
+solution27([1, 2, 1]);
+solution27([1, 1, 1]);
