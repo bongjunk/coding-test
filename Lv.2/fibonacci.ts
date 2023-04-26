@@ -19,16 +19,16 @@ n은 2 이상 100,000 이하인 자연수입니다.
 */
 
 const solution31 = (n: any) => {
-  let answer = 0;
+  let answer: any = 0;
 
   // for (let i = 0; i < n; i++) {
   //   console.log("ii", i);
   //   console.log("n[i]", n[i]);
   // }
-
   console.log(n - 1 + (n - 2));
 
-  return answer;
+  return solution31(n - 1) + solution31(n - 2);
+  // return answer;
 };
 
 solution31(2);

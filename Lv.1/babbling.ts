@@ -150,4 +150,74 @@ const solution27 = (arr: any) => {
 
 solution27([1, 2, 1, 4, 5, 2, 9]);
 solution27([1, 2, 1]);
-solution27([1, 1, 1]);
+
+const solution32 = (myString: any) => {
+  let answer: any = [];
+  if (myString.includes("x")) {
+    console.log(myString.includes("x"));
+  }
+  console.log("search", myString.search("x"));
+  return answer;
+};
+
+solution32("oxooxoxxox");
+solution32("xabcxdefxghi");
+
+const solution33 = (my_string: any, alp: any) => {
+  let answer = "";
+  answer = my_string.replaceAll(alp, alp.toUpperCase());
+  return answer;
+};
+
+solution33("programmers", "p");
+solution33("lowercase", "x");
+
+const solution34 = (my_string: any) => {
+  let answer: any = [];
+  console.log(my_string.split(" "));
+  return answer;
+};
+
+solution34("i love you");
+solution34("programmers");
+
+const solution35 = (binomial: any) => {
+  let answer: any = 0;
+  // console.log(new Function(binomial));
+  const eval1 = new Function()();
+  // eval(binomial);
+  // console.log("binomial", eval(binomial));
+  return eval1;
+};
+
+solution35("43 + 12");
+solution35("0 - 7777");
+solution35("40000 * 40000");
+
+const solution36 = (str1: any, str2: any) => {
+  let answer = "";
+  let arr = [];
+  for (let i = 0; i < str1.length; i++) {
+    answer += str1[i] + str2[i];
+    // for (let j = i; j < str2.length; j++) {
+    //   console.log(str2[j]);
+    //   answer += str1[i] + str2[i];
+    // }
+  }
+  console.log("answer", answer);
+  return answer;
+};
+
+solution36("aaaaa", "bbbbb");
+
+const solution37 = (my_string: any, s: number, e: number) => {
+  let answer = "";
+  const substring = my_string.substring(s, e);
+  const split = my_string.split("").slice(s, e).reverse().join("");
+  console.log("replace", my_string.replace(split));
+  console.log("reverse", my_string.split("").slice(s, e).reverse().join(""));
+  return answer;
+};
+
+solution37("Progra21Sremm3", 6, 12);
+solution37("Stanley1yelnatS", 4, 10);
