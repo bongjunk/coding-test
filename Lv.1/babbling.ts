@@ -212,12 +212,68 @@ solution36("aaaaa", "bbbbb");
 
 const solution37 = (my_string: any, s: number, e: number) => {
   let answer = "";
-  const substring = my_string.substring(s, e);
-  const split = my_string.split("").slice(s, e).reverse().join("");
-  console.log("replace", my_string.replace(split));
-  console.log("reverse", my_string.split("").slice(s, e).reverse().join(""));
+  const start = my_string.substring(0, s);
+  const split = my_string
+    .split("")
+    .slice(s, e + 1)
+    .reverse()
+    .join("");
+  const end = my_string.substring(e + 1, my_string.length);
+
+  answer = start + split + end;
+  console.log("answer", answer);
   return answer;
 };
 
 solution37("Progra21Sremm3", 6, 12);
 solution37("Stanley1yelnatS", 4, 10);
+
+const solution38 = (my_string: any, queries: any) => {
+  let answer = "";
+  // const arr = my_string.split("");
+  // console.log("arrrr", ([arr[0], arr[1]] = [arr[1], arr[0]]));
+  // console.log("arr", arr);
+
+  // const swapFunc = (arr: any, start: any, end: any) => {
+  //   [arr[start], arr[end]] = [arr[end], arr[start]];
+  // };
+
+  queries.forEach((el: any) => {
+    const [s, e]: any = el;
+    console.log(s, e);
+
+    // const reverseFunc = () => {
+
+    // }
+
+    const arr: any = my_string
+      .split("")
+      .slice(s, e + 1)
+      .reverse();
+
+    const isScope = (el: any) => {
+      console.log("isScope", el);
+    };
+    console.log("findIndex", arr.findIndex(isScope));
+    // console.log("slice", arr.push(arr.slice(s, e)));
+    // console.log("reverse", arr.reverse());
+    console.log("arr", arr);
+    // swapFunc(arr, start, end);
+  });
+
+  console.log("answer", answer);
+  return answer;
+};
+
+solution38("rermgorpsam", [
+  [2, 3],
+  [0, 7],
+  [5, 9],
+  [6, 10],
+]);
+
+// remrgorpsam
+// pemrgorrsam
+// pemrgarrsom
+// pemrgamrsor
+// mr, pr, ao, mr
