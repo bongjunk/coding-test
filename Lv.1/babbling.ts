@@ -320,3 +320,70 @@ const solution41 = (n: any, control: any) => {
 };
 
 solution41(0, "wsdawsdassw");
+
+const solution42 = (numLog: any) => {
+  let answer = "";
+  console.log("numLog", numLog);
+  console.log("numLogSlice", numLog.slice(1));
+
+  // const maniNum: any = {
+  //   w: +1,
+  //   s: -1,
+  //   d: +10,
+  //   a: -10,
+  // };
+
+  const maniNum: any = {
+    "+1": "w",
+    "-1": "s",
+    "+10": "d",
+    "-10": "a",
+  };
+
+  // numLog.forEach((el: any) => {
+  //   // console.log("el", el[0]);
+  // });
+
+  numLog.slice(1).reduce((acc: any, cur: any, idx: any) => {
+    console.log("acc", acc, "cur", cur);
+    console.log("numLog[idx]", numLog[idx]);
+    if (undefined) return null;
+    return (answer = acc + maniNum[numLog[idx] - numLog[idx - 1]]);
+  }, "");
+
+  // console.log("numLog.slice(1)", numLog.slice(1));
+  console.log("answer", answer);
+
+  return answer;
+};
+
+solution42([0, 1, 0, 10, 0, 1, 0, 10, 0, -1, -2, -1]);
+// "wsdawsdassw"
+
+const solution43 = (numLog: any) => {
+  const controller = {
+    "1": "w",
+    "-1": "s",
+    "10": "d",
+    "-10": "a",
+  };
+  console.log(
+    "answer",
+    numLog
+      .slice(1)
+      .reduce(
+        (acc: any, cur: any, idx: any) =>
+          acc + controller[`${numLog[idx + 1] - numLog[idx]}`],
+        ""
+      )
+  );
+  return numLog
+    .slice(1)
+    .reduce(
+      (acc: any, cur: any, idx: any) =>
+        acc + controller[`${numLog[idx + 1] - numLog[idx]}`],
+      ""
+    );
+};
+
+solution43([0, 1, 0, 10, 0, 1, 0, 10, 0, -1, -2, -1]);
