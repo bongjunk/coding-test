@@ -230,38 +230,25 @@ solution37("Stanley1yelnatS", 4, 10);
 
 const solution38 = (my_string: any, queries: any) => {
   let answer = "";
-  // const arr = my_string.split("");
-  // console.log("arrrr", ([arr[0], arr[1]] = [arr[1], arr[0]]));
-  // console.log("arr", arr);
-
-  // const swapFunc = (arr: any, start: any, end: any) => {
-  //   [arr[start], arr[end]] = [arr[end], arr[start]];
-  // };
 
   queries.forEach((el: any) => {
     const [s, e]: any = el;
     console.log(s, e);
 
-    // const reverseFunc = () => {
-
-    // }
-
-    const arr: any = my_string
+    const start = my_string.substring(0, s);
+    const slice = my_string
       .split("")
       .slice(s, e + 1)
-      .reverse();
+      .reverse()
+      .join("");
+    const end = my_string.substring(e + 1, my_string.length);
 
-    const isScope = (el: any) => {
-      console.log("isScope", el);
-    };
-    console.log("findIndex", arr.findIndex(isScope));
-    // console.log("slice", arr.push(arr.slice(s, e)));
-    // console.log("reverse", arr.reverse());
-    console.log("arr", arr);
-    // swapFunc(arr, start, end);
+    console.log("start", start, "end", end);
+
+    answer = start + slice + end;
   });
 
-  console.log("answer", answer);
+  console.log("answer38", answer);
   return answer;
 };
 
@@ -272,8 +259,64 @@ solution38("rermgorpsam", [
   [6, 10],
 ]);
 
-// remrgorpsam
-// pemrgorrsam
-// pemrgarrsom
-// pemrgamrsor
-// mr, pr, ao, mr
+const solution39 = (a: any, b: any, c: any) => {
+  let answer = 0;
+  const sum = a + b + c;
+  const squared = Math.pow(a, 2) + Math.pow(b, 2) + Math.pow(c, 2);
+  const pow = Math.pow(a, 3) + Math.pow(b, 3) + Math.pow(c, 3);
+
+  if (a !== b && b !== c && a !== c) {
+    answer = sum;
+  } else if (a === b && b === c && a === c) {
+    answer = sum * squared * pow;
+  } else {
+    answer = sum * squared;
+  }
+
+  console.log("answer", answer);
+  return answer;
+};
+
+solution39(2, 6, 1);
+solution39(5, 3, 3);
+solution39(4, 4, 4);
+
+const solution40 = (my_string: string, k: number) => {
+  let answer = "";
+
+  for (let i = 0; i < k; i++) {
+    answer += my_string;
+  }
+
+  // 쉬운방법
+  // console.log(my_string.repeat(k));
+
+  console.log("answer", answer);
+  return answer;
+};
+
+solution40("string", 3);
+solution40("love", 10);
+
+const solution41 = (n: any, control: any) => {
+  let answer = 0;
+
+  const maniNum: any = {
+    w: +1,
+    s: -1,
+    d: +10,
+    a: -10,
+  };
+
+  const split = control.split("");
+
+  split.reduce((acc: any, cur: any) => {
+    return (answer = acc + maniNum[cur]);
+  }, n);
+
+  console.log("answer", answer);
+
+  return answer;
+};
+
+solution41(0, "wsdawsdassw");
