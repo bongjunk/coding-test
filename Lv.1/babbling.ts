@@ -360,30 +360,130 @@ const solution42 = (numLog: any) => {
 solution42([0, 1, 0, 10, 0, 1, 0, 10, 0, -1, -2, -1]);
 // "wsdawsdassw"
 
-const solution43 = (numLog: any) => {
-  const controller = {
-    "1": "w",
-    "-1": "s",
-    "10": "d",
-    "-10": "a",
-  };
-  console.log(
-    "answer",
-    numLog
-      .slice(1)
-      .reduce(
-        (acc: any, cur: any, idx: any) =>
-          acc + controller[`${numLog[idx + 1] - numLog[idx]}`],
-        ""
-      )
-  );
-  return numLog
-    .slice(1)
-    .reduce(
-      (acc: any, cur: any, idx: any) =>
-        acc + controller[`${numLog[idx + 1] - numLog[idx]}`],
-      ""
-    );
+// const solution43 = (numLog: any) => {
+//   const controller = {
+//     "1": "w",
+//     "-1": "s",
+//     "10": "d",
+//     "-10": "a",
+//   };
+//   console.log(
+//     "answer",
+//     numLog
+//       .slice(1)
+//       .reduce(
+//         (acc: any, cur: any, idx: any) =>
+//           acc + controller[`${numLog[idx + 1] - numLog[idx]}`],
+//         ""
+//       )
+//   );
+//   return numLog
+//     .slice(1)
+//     .reduce(
+//       (acc: any, cur: any, idx: any) =>
+//         acc + controller[`${numLog[idx + 1] - numLog[idx]}`],
+//       ""
+//     );
+// };
+
+// solution43([0, 1, 0, 10, 0, 1, 0, 10, 0, -1, -2, -1]);
+
+// 배열 만들기4
+const solution45 = (arr: any) => {
+  let stk: any[] = [];
+  let i = 0;
+
+  console.log("stk.length", stk.length, "i", i);
+
+  while (i < arr.length) {
+    if (stk.length === 0) {
+      stk.push(arr[i]);
+      i++;
+    } else if (stk.length !== 0 && stk[stk.length - 1] < arr[i]) {
+      stk.push(arr[i]);
+      i++;
+    } else if (stk.length !== 0 && stk[stk.length - 1] >= arr[i]) {
+      stk.pop();
+    } else {
+      break;
+    }
+  }
+
+  console.log("iii", i);
+  console.log("stk", stk);
+  return stk;
 };
 
-solution43([0, 1, 0, 10, 0, 1, 0, 10, 0, -1, -2, -1]);
+solution45([1, 4, 2, 5, 3]);
+
+// 문자열의 뒤의 n글자
+const solution46 = (my_string: string, n: number) => {
+  let answer = "";
+
+  answer = my_string.substring(my_string.length - n);
+  console.log("answer", answer);
+  return answer;
+};
+
+solution46("ProgrammerS123", 11); // grammerS123
+solution46("He110W0r1d", 5); // W0r1d
+
+// 배열 만들기 2
+const solution47 = (l: any, r: any) => {
+  let answer: any[] = [];
+  let arr: any[] = [];
+  // const regExp = /^[0,5]+$/;
+  for (let i = l; i <= r; i++) {
+    arr.push(i);
+  }
+  // if (arr.includes(0) && arr.includes(5)) {
+  //   answer.push(arr);
+  // }
+  answer.push(arr.includes(5));
+  // console.log("include", arr.includes(5));
+  // console.log("arr", arr);
+  // console.log("arr.includes", arr.includes(0) && arr.includes(5));
+  // console.log("answer", answer);
+  return answer;
+};
+
+solution47(5, 555);
+solution47(10, 20);
+
+// 홀수 vs 짝수
+const solution48 = (num_list: any) => {
+  let answer = 0;
+  let even = 0;
+  let odd = 0;
+
+  num_list.forEach((el: any, idx: any) => {
+    idx++;
+    if (idx % 2 === 0) {
+      even += el;
+    } else {
+      odd += el;
+    }
+  });
+
+  even > odd ? (answer = even) : (answer = odd);
+  console.log("answer", answer);
+  return answer;
+};
+
+solution48([4, 2, 6, 1, 7, 6]);
+solution48([-1, 2, 5, 6, 3]);
+
+const solution49 = (my_string: any, index_list: any) => {
+  let answer = "";
+  const split = my_string.split("");
+
+  index_list.forEach((el: any) => {
+    answer += split.slice(el, el + 1);
+  });
+
+  console.log("answer", answer);
+  return answer;
+};
+
+solution49("cvsgiorszzzmrpaqpe", [16, 6, 5, 3, 12, 14, 11, 11, 17, 12, 7]);
+solution49("zpiaz", [1, 2, 0, 0, 3]);
