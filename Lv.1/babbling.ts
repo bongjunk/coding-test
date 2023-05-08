@@ -487,3 +487,135 @@ const solution49 = (my_string: any, index_list: any) => {
 
 solution49("cvsgiorszzzmrpaqpe", [16, 6, 5, 3, 12, 14, 11, 11, 17, 12, 7]);
 solution49("zpiaz", [1, 2, 0, 0, 3]);
+
+const solution50 = (num_list: any, n: any) => {
+  let answer: any = [];
+  answer = num_list.slice(n - 1, num_list.length);
+  console.log("answer", answer);
+  return answer;
+};
+
+solution50([2, 1, 6], 3);
+solution50([5, 2, 1, 7, 5], 2);
+
+// 순서 바꾸기
+const solution51 = (num_list: any, n: any) => {
+  let answer: any = [];
+  answer = num_list.slice(n).concat(num_list.slice(0, n));
+  console.log("answer", answer);
+  return answer;
+};
+
+solution51([2, 1, 6], 1);
+solution51([5, 2, 1, 7, 5], 3);
+
+// n개 간격의 원소들
+const solution52 = (num_list: any, n: any) => {
+  let answer: any = [];
+  num_list.forEach((el: any, idx: any) => {
+    console.log("ell", el);
+    if (idx % n === 0) {
+      answer.push(el);
+    } else {
+      null;
+    }
+  });
+  console.log("answer", answer);
+  return answer;
+};
+
+solution52([4, 2, 6, 1, 7, 6], 2);
+solution52([4, 2, 6, 1, 7, 6], 4);
+
+// 배열의 원소만큼 추가하기
+const solution53 = (arr: any) => {
+  let answer: any = [];
+  arr.forEach((el: any) => {
+    for (let i = 0; i < el; i++) {
+      answer.push(el);
+    }
+  });
+  console.log("answer", answer);
+  return answer;
+};
+
+solution53([5, 1, 4]);
+solution53([6, 6]);
+solution53([1]);
+
+// 배열에서 문자열 대소문자 변환하기
+const solution54 = (strArr: any) => {
+  let answer: any = [];
+  strArr.forEach((el: any, idx: any) => {
+    if (idx % 2 === 0) {
+      answer.push(el.toLowerCase());
+    } else {
+      answer.push(el.toUpperCase());
+    }
+  });
+  console.log("answer", answer);
+  return answer;
+};
+
+solution54(["AAA", "BBB", "CCC", "DDD"]);
+solution54(["aBc", "AbC"]);
+
+// 길이에 따른 연산
+const solution55 = (num_list: any) => {
+  let answer = 0;
+  num_list.reduce((acc: any, cur: any) => {
+    if (num_list.length > 11) {
+      return (answer = acc + cur);
+    } else {
+      return (answer = acc * cur);
+    }
+  });
+  console.log("answer", answer);
+  return answer;
+};
+
+solution55([3, 4, 5, 2, 5, 4, 6, 7, 3, 7, 2, 2, 1]); // 51
+solution55([2, 3, 4, 5]); // 120
+
+// A 강조하기
+const solution56 = (myString: any) => {
+  let answer: any = "";
+
+  answer = myString
+    .split("")
+    .map((el: any) => {
+      if (el === "a" || el === "A") {
+        return "A";
+      } else {
+        return el.toLowerCase();
+      }
+    })
+    .join("");
+
+  // 축약방법
+  // myString.toLowerCase().replaceAll("a", "A");
+  console.log("answer", answer);
+  return answer;
+};
+
+solution56("abstract algebra");
+solution56("PrOgRaMmErS");
+
+// 첫 번째로 나오는 음수
+const solution57 = (num_list: any) => {
+  let answer = 0;
+  // num_list.forEach((el: any, idx: any) => {
+  //   if (el < 0 && idx) {
+  //     console.log("idx1", idx);
+  //     // answer += idx;
+  //   } else {
+  //     answer = -1;
+  //   }
+  // });
+  console.log(num_list.findIndex((v: any) => v < 0));
+  console.log("answer", answer);
+  return answer;
+};
+
+solution57([12, 4, 15, 46, 38, -2, 15]);
+solution57([13, 22, 53, 24, 15, 6]);
