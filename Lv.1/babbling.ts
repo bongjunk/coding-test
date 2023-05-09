@@ -604,18 +604,96 @@ solution56("PrOgRaMmErS");
 // 첫 번째로 나오는 음수
 const solution57 = (num_list: any) => {
   let answer = 0;
-  // num_list.forEach((el: any, idx: any) => {
-  //   if (el < 0 && idx) {
-  //     console.log("idx1", idx);
-  //     // answer += idx;
-  //   } else {
-  //     answer = -1;
-  //   }
-  // });
-  console.log(num_list.findIndex((v: any) => v < 0));
+  answer = num_list.findIndex((v: any) => v < 0);
   console.log("answer", answer);
   return answer;
 };
 
 solution57([12, 4, 15, 46, 38, -2, 15]);
 solution57([13, 22, 53, 24, 15, 6]);
+
+const solution58 = (n_str: any) => {
+  let answer = "";
+  answer = Number(n_str).toString();
+  console.log("answer", answer);
+  return answer;
+};
+
+solution58("0010");
+solution58("854020");
+
+const solution59 = (a: number, b: number) => {
+  let answer = 0;
+  if (a % 2 !== 0 && b % 2 !== 0) {
+    answer = Math.pow(a, 2) + Math.pow(b, 2);
+  } else if ((a % 2 !== 0 && b % 2 === 0) || (a % 2 === 0 && b % 2 !== 0)) {
+    answer = 2 * (a + b);
+  } else {
+    answer = Math.abs(a - b);
+  }
+  console.log("answer", answer);
+  return answer;
+};
+
+solution59(3, 5);
+solution59(6, 1);
+solution59(2, 4);
+
+const solution60 = (date1: any, date2: any) => {
+  let answer = 0;
+  const dateO = new Date(date1);
+  const dateT = new Date(date2);
+  answer = dateO < dateT ? 1 : 0;
+  console.log("answer", answer);
+  return answer;
+};
+
+solution60([2021, 12, 28], [2021, 12, 29]);
+solution60([1024, 10, 24], [1024, 10, 24]);
+
+const solution61 = (arr: number[], k: number) => {
+  let answer: number[] = [];
+
+  arr.forEach((el: number) => {
+    if (k % 2 === 0) {
+      return answer.push(el + k);
+    } else {
+      return answer.push(el * k);
+    }
+  });
+  console.log("answer", answer);
+  return answer;
+};
+
+solution61([1, 2, 3, 100, 99, 98], 3);
+solution61([1, 2, 3, 100, 99, 98], 2);
+
+const solution62 = (myString: any) => {
+  let answer = "";
+  const alphabet = myString.split("");
+  alphabet.forEach((el: any) => {
+    if (el < "l") {
+      answer += el.replace(el, "l");
+    } else {
+      answer += el;
+    }
+  });
+  console.log("answer", answer);
+  return answer;
+};
+
+solution62("abcdevwxyz");
+solution62("jjnnllkkmm");
+
+const solution63 = (num_str: any) => {
+  let answer = 0;
+  // console.log(num_str.split("").((el: any) => el + el));
+  num_str.split("").reduce((acc: any, cur: any) => {
+    return (answer = Number(acc) + Number(cur));
+  });
+  console.log("answer", answer);
+  return answer;
+};
+
+solution63("123456789");
+solution63("1000000");
