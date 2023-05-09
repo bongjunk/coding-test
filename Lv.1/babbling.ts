@@ -697,3 +697,102 @@ const solution63 = (num_str: any) => {
 
 solution63("123456789");
 solution63("1000000");
+
+const solution64 = (num_list: number[]) => {
+  let answer: number[] = [];
+  console.log(num_list.sort((a, b) => a - b).splice(5, num_list.length - 1));
+  return answer;
+};
+
+solution64([12, 4, 15, 46, 38, 1, 14, 56, 32, 10]);
+
+const solution65 = (arr: any, delete_list: any) => {
+  let answer: number[] = [];
+  console.log("arr", arr.includes(1001));
+  // if (arr.includes(delete_list)) {
+  //   console.log(arr.splice(delete_list, 1));
+  // }
+
+  delete_list.forEach((el: any) => {
+    console.log("el", el);
+    console.log(arr.includes(el));
+    if (arr.includes(el)) {
+      return arr.splice(arr.indexOf(el), 1);
+    } else {
+      return arr;
+    }
+  });
+  answer.push(...arr);
+  console.log("answer", answer);
+  return answer;
+};
+
+solution65([293, 1000, 395, 678, 94], [94, 777, 104, 1000, 1, 12]);
+solution65([110, 66, 439, 785, 1], [377, 823, 119, 43]);
+
+const solution66 = (picture: any, k: any) => {
+  let answer: any = [];
+
+  for (let i = 0; i < picture.length; i++) {
+    for (let j = 0; j < k; j++) {
+      answer.push(
+        picture[i]
+          .split("")
+          .map((el: any) => el.repeat(k))
+          .join("")
+      );
+    }
+  }
+
+  console.log("picture", picture);
+
+  console.log("answer", answer);
+  return answer;
+};
+
+solution66(
+  [
+    ".xx...xx.",
+    "x..x.x..x",
+    "x...x...x",
+    ".x.....x.",
+    "..x...x..",
+    "...x.x...",
+    "....x....",
+  ],
+  2
+);
+solution66(["x.x", ".x.", "x.x"], 3);
+
+const solution67 = (my_string: any, num1: any, num2: any) => {
+  let answer = "";
+  const split = my_string.split("");
+  let temp = split[num1];
+  split[num1] = split[num2];
+  split[num2] = temp;
+  answer = split.join("");
+  console.log("answer", answer);
+  return answer;
+};
+
+solution67("hello", 1, 2);
+solution67("I love you", 3, 6);
+
+const solution68 = (s1: any, s2: any) => {
+  let answer = 0;
+  answer = s1.filter((r: any) => s2.includes(r)).length;
+  console.log("answer", answer);
+  return answer;
+};
+
+solution68(["a", "b", "c"], ["com", "b", "d", "p", "c"]);
+solution68(["n", "omg"], ["m", "dot"]);
+
+const solution69 = (message: string) => {
+  let answer = 0;
+  console.log(message.length * 2);
+  return answer;
+};
+
+solution69("happy birthday!");
+solution69("I love you~");
