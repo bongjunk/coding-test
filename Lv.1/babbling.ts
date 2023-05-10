@@ -1108,3 +1108,48 @@ const solution89 = (numbers: number[], n: number) => {
 
 solution89([34, 5, 71, 29, 100, 34], 123); // 139
 solution89([58, 44, 27, 10, 100], 139); // 239
+
+const solution90 = (my_string: string) => {
+  return my_string.split(" ").filter((el) => {
+    el !== "";
+  });
+};
+
+solution90(" i    love  you");
+solution90("    programmers  ");
+
+// 부분 문자열 이어 붙여 문자열 만들기
+const solution91 = (my_strings: any, parts: any) => {
+  let answer = "";
+
+  my_strings.forEach((v: any, idx: any) => {
+    answer += v.substring(parts[idx][0], parts[idx][1] + 1);
+  });
+
+  console.log("answer", answer);
+  return answer;
+};
+
+solution91(
+  ["progressive", "hamburger", "hammer", "ahocorasick"],
+  [
+    [0, 4],
+    [1, 2],
+    [3, 5],
+    [7, 7],
+  ]
+);
+
+const solution92 = (n: number, k: number) => {
+  let answer: number[] = [];
+  for (let i = 1; i <= n; i++) {
+    if (i % k === 0) {
+      answer.push(i);
+    }
+  }
+  console.log("answer", answer);
+  return answer;
+};
+
+solution92(10, 3);
+solution92(15, 5);
