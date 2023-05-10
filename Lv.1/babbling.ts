@@ -796,3 +796,100 @@ const solution69 = (message: string) => {
 
 solution69("happy birthday!");
 solution69("I love you~");
+
+// 자릿수 더하기
+const solution70 = (n: any) => {
+  let answer = 0;
+  n.toString()
+    .split("")
+    .reduce((acc: any, cur: any) => {
+      return (answer = Number(acc) + Number(cur));
+    });
+
+  console.log("answer", answer);
+  return answer;
+};
+
+solution70(1234);
+solution70(930211);
+
+// 암호 해독
+const solution71 = (cipher: string, code: number) => {
+  let answer = "";
+  cipher.split("").forEach((el: any, idx: number) => {
+    if ((idx + 1) % code === 0) {
+      answer += el;
+    }
+  });
+  console.log("answer", answer);
+  return answer;
+};
+
+solution71("dfjardstddetckdaccccdegk", 4);
+solution71("pfqallllabwaoclk", 2);
+
+// 369
+const solution72 = (order: any) => {
+  let answer = 0;
+  console.log(order.toString().split(""));
+  order
+    .toString()
+    .split("")
+    .forEach((el: any) => {
+      if (el.includes(3) || el.includes(6) || el.includes(9)) {
+        answer++;
+      }
+    });
+  console.log("answer", answer);
+  return answer;
+};
+
+solution72(3);
+solution72(29423);
+
+// 가장 큰 수 찾기
+const solution73 = (array: number[]) => {
+  let answer: any = [];
+
+  answer.push(Math.max(...array), array.indexOf(Math.max(...array)));
+  console.log("answer", answer);
+  return answer;
+};
+
+solution73([1, 8, 3]);
+solution73([9, 10, 11, 8]);
+
+// 중복된 문자 제거
+const solution74 = (my_string: string) => {
+  let answer = "";
+  const dup = new Set(my_string);
+  dup.forEach((el: any) => (answer += el));
+  console.log("answer", answer);
+  return answer;
+};
+
+solution74("people");
+solution74("We are the world");
+
+// 숫자 찾기
+const solution75 = (num: any, k: any) => {
+  let answer = 0;
+  num
+    .toString()
+    .split("")
+    .forEach((el: any, idx: number) => {
+      console.log("el", el, "idx", idx);
+      if (el.includes(k)) {
+        console.log("e;e;e;", el);
+        answer = idx;
+      } else {
+        answer = -1;
+      }
+    });
+  console.log("answer", answer);
+  return answer;
+};
+
+solution75(29183, 1);
+solution75(232443, 4);
+solution75(123456, 7);
