@@ -874,18 +874,7 @@ solution74("We are the world");
 // 숫자 찾기
 const solution75 = (num: any, k: any) => {
   let answer = 0;
-  num
-    .toString()
-    .split("")
-    .forEach((el: any, idx: number) => {
-      console.log("el", el, "idx", idx);
-      if (el.includes(k)) {
-        console.log("e;e;e;", el);
-        answer = idx;
-      } else {
-        answer = -1;
-      }
-    });
+  answer = num.toString().indexOf(k) + 1 || -1;
   console.log("answer", answer);
   return answer;
 };
@@ -893,3 +882,229 @@ const solution75 = (num: any, k: any) => {
 solution75(29183, 1);
 solution75(232443, 4);
 solution75(123456, 7);
+
+// A로 B 만들기
+const solution76 = (before: any, after: any) => {
+  let answer = 0;
+  answer =
+    before.split("").sort().join("") === after.split("").sort().join("")
+      ? 1
+      : 0;
+  return answer;
+};
+
+solution76("olleh", "hello");
+solution76("allpe", "apple");
+
+const solution77 = (my_string: string) => {
+  let answer = "";
+  my_string.split("").map((el, idx) => {
+    if (el === el.toLowerCase()) {
+      answer += el.toUpperCase();
+    } else {
+      answer += el.toLowerCase();
+    }
+  });
+  console.log("answer", answer);
+  return answer;
+};
+
+solution77("cccCCC");
+solution77("abCdEfghIJ");
+
+// const solution = (my_string) => {
+//   let answer = "";
+//   my_string.split("").map((el, idx) => {
+//     if (el === el.toLowerCase()) {
+//       answer += el.toUpperCase();
+//     } else {
+//       answer += el.toLowerCase();
+//     }
+//   });
+//   return answer;
+// };
+
+const solution78 = (num_list: any) => {
+  let answer = 0;
+  num_list.map((el: any) => {
+    return el % 2 === 1 ? (answer = el) : null;
+  });
+  console.log("answer", answer);
+  return answer;
+};
+
+solution78([3, 4, 5, 2, 1]);
+solution78([5, 7, 8, 3]);
+
+const solution79 = (array: number[], n: number) => {
+  let answer = 0;
+
+  array.forEach((el: any, idx: any) => {
+    el === n && answer++;
+  });
+
+  console.log("answer", answer);
+  return answer;
+};
+
+solution79([1, 1, 2, 3, 4, 5], 1);
+solution79([0, 2, 3, 4], 1);
+
+const solution80 = (array: number[], height: number) => {
+  let answer = 0;
+  answer = array.filter((r) => r > height).length;
+  console.log("answer", answer);
+  return answer;
+};
+
+solution80([149, 180, 192, 170], 167);
+solution80([180, 120, 140], 190);
+
+// 중앙값 구하기
+const solution81 = (array: number[]) => {
+  let answer = 0;
+  array
+    .sort((a, b) => a - b)
+    .find((el, idx) => {
+      if (Math.floor(array.length / 2) === idx) {
+        answer = el;
+      }
+    });
+  console.log("answer", answer);
+  return answer;
+};
+
+solution81([1, 2, 7, 10, 11]);
+solution81([9, -1, 0]);
+
+// 피자 나눠 먹기 (1)
+const solution82 = (n: number) => {
+  let answer = 0;
+  console.log("nn", n % 7 === 0 ? Math.floor(n / 7) : Math.floor(n / 7) + 1);
+  answer = n % 7 === 0 ? Math.floor(n / 7) : Math.floor(n / 7) + 1;
+  console.log("answer", answer);
+  return answer;
+};
+
+solution82(7);
+solution82(1);
+solution82(15);
+
+// 배열의 평균값
+const solution83 = (numbers: number[]) => {
+  let answer = 0;
+  numbers.reduce((acc, cur) => {
+    return (answer = acc + cur);
+  });
+  return answer / numbers.length;
+};
+
+solution83([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+solution83([89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]);
+
+// 모스부호 (1)
+const solution84 = (letter: any) => {
+  let answer = "";
+  const morse: any = {
+    ".-": "a",
+    "-...": "b",
+    "-.-.": "c",
+    "-..": "d",
+    ".": "e",
+    "..-.": "f",
+    "--.": "g",
+    "....": "h",
+    "..": "i",
+    ".---": "j",
+    "-.-": "k",
+    ".-..": "l",
+    "--": "m",
+    "-.": "n",
+    "---": "o",
+    ".--.": "p",
+    "--.-": "q",
+    ".-.": "r",
+    "...": "s",
+    "-": "t",
+    "..-": "u",
+    "...-": "v",
+    ".--": "w",
+    "-..-": "x",
+    "-.--": "y",
+    "--..": "z",
+  };
+
+  letter.split(" ").map((el: any) => {
+    console.log("elel", el);
+    answer += morse[el];
+  });
+
+  console.log("answer", answer);
+  return answer;
+};
+
+solution84(".... . .-.. .-.. ---");
+solution84(".--. -.-- - .... --- -.");
+
+// 가위 바위 보
+const solution85 = (rsp: string) => {
+  let answer = "";
+  rsp.split("").forEach((el: any) => {
+    answer += el === "2" ? 0 : el === "0" ? 5 : 2;
+  });
+  console.log("answer", answer);
+  return answer;
+};
+
+solution85("2");
+solution85("205");
+
+// 각도기
+const solution86 = (angle: number) => {
+  let answer = 0;
+  answer =
+    angle < 90 ? 1 : angle === 90 ? 2 : 90 < angle && angle < 180 ? 3 : 4;
+  console.log("answer", answer);
+  return answer;
+};
+
+solution86(70);
+solution86(91);
+solution86(180);
+
+const solution87 = (strlist: string[]) => {
+  let answer: number[] = [];
+  strlist.forEach((el) => {
+    answer.push(el.length);
+  });
+  // 간단한 방법
+  // strlist.map((r) => r.length)
+  console.log("answer", answer);
+  return answer;
+};
+
+solution87(["We", "are", "the", "world!"]);
+solution87(["I", "Love", "Programmers."]);
+
+// 세균 증식
+const solution88 = (n: number, t: number) => {
+  let answer = 0;
+  for (let i = 0; i <= t; i++) {
+    answer = Math.pow(2, t) * n;
+  }
+  // console.log(n << t);
+  console.log("answer", answer);
+  return answer;
+};
+
+solution88(2, 10);
+solution88(7, 15);
+
+const solution89 = (numbers: number[], n: number) => {
+  return numbers.reduce((acc, cur) => {
+    return acc <= n ? acc + cur : acc;
+  });
+};
+
+solution89([34, 5, 71, 29, 100, 34], 123); // 139
+solution89([58, 44, 27, 10, 100], 139); // 239
