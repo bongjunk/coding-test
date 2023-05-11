@@ -1186,3 +1186,112 @@ const solution97 = (names: string[]) => {
 };
 
 solution97(["nami", "ahri", "jayce", "garen", "ivern", "vex", "jinx"]);
+
+// x 사이의 개수
+const solution98 = (myString: any) => {
+  let answer: any[] = [];
+  myString.split("x").map((el: any) => answer.push(el.length));
+  console.log("answer", answer);
+  return answer;
+};
+
+solution98("oxooxoxxox"); // [1, 2, 1, 0, 1, 0]
+solution98("xabcxdefxghi"); // [0, 3, 3, 3]
+
+// 외계행성의 나이
+const solution99 = (age: any) => {
+  let answer: any = "";
+  const planet: any = {
+    0: "a",
+    1: "b",
+    2: "c",
+    3: "d",
+    4: "e",
+    5: "f",
+    6: "g",
+    7: "h",
+    8: "i",
+    9: "j",
+  };
+
+  age
+    .toString()
+    .split("")
+    .forEach((el: any) => {
+      answer += planet[el];
+    });
+  console.log("answer", answer);
+  return answer;
+};
+
+solution99(23);
+solution99(51);
+solution99(100);
+
+const solution100 = (hp: number) => {
+  let answer = 0;
+
+  const ant = {
+    장군개미: 5,
+    병정개미: 3,
+    일개미: 1,
+  };
+
+  const gen = Math.floor(hp / ant.장군개미);
+  const sor = Math.floor((hp - gen * ant.장군개미) / ant.병정개미);
+  const work = hp - gen * ant.장군개미 - sor * ant.병정개미;
+  answer = gen + sor + work;
+  console.log("answer", answer);
+  return answer;
+};
+
+solution100(23);
+solution100(24);
+solution100(999);
+
+const solution101 = (n: number, k: number) => {
+  let answer = 0;
+  const service = Math.floor(n / 10);
+  // console.log("titlTest", ~~(n / 10));
+  // console.log("test", ~~-12.6, Math.floor(-12.6));
+  if (n >= 10) {
+    answer = n * 12000 + (k - service) * 2000;
+  } else {
+    answer = n * 12000 + k * 2000;
+  }
+  console.log("service", service);
+  console.log("answer", answer);
+  return answer;
+};
+
+solution101(10, 3);
+solution101(64, 6);
+
+const solution102 = (dot: number[]) => {
+  let answer = 0;
+
+  if (Math.sign(dot[0]) === 1 && Math.sign(dot[1]) === 1) {
+    answer = 1;
+  } else if (Math.sign(dot[0]) !== 1 && Math.sign(dot[1]) === 1) {
+    answer = 2;
+  } else if (Math.sign(dot[0]) !== 1 && Math.sign(dot[1]) !== 1) {
+    answer = 3;
+  } else {
+    answer = 4;
+  }
+
+  console.log("answer", answer);
+  return answer;
+};
+
+solution102([2, 4]);
+solution102([-7, 9]);
+
+const solution103 = (numbers: number[], num1: number, num2: number) => {
+  let answer: number[] = [];
+  numbers.slice(num1, num2 + 1);
+  return answer;
+};
+
+solution103([1, 2, 3, 4, 5], 1, 3);
+solution103([1, 3, 5], 1, 2);
