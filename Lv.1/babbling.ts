@@ -323,8 +323,8 @@ solution41(0, "wsdawsdassw");
 
 const solution42 = (numLog: any) => {
   let answer = "";
-  console.log("numLog", numLog);
-  console.log("numLogSlice", numLog.slice(1));
+  // console.log("numLog", numLog);
+  // console.log("numLogSlice", numLog.slice(1));
 
   // const maniNum: any = {
   //   w: +1,
@@ -708,14 +708,8 @@ solution64([12, 4, 15, 46, 38, 1, 14, 56, 32, 10]);
 
 const solution65 = (arr: any, delete_list: any) => {
   let answer: number[] = [];
-  console.log("arr", arr.includes(1001));
-  // if (arr.includes(delete_list)) {
-  //   console.log(arr.splice(delete_list, 1));
-  // }
 
   delete_list.forEach((el: any) => {
-    console.log("el", el);
-    console.log(arr.includes(el));
     if (arr.includes(el)) {
       return arr.splice(arr.indexOf(el), 1);
     } else {
@@ -743,8 +737,6 @@ const solution66 = (picture: any, k: any) => {
       );
     }
   }
-
-  console.log("picture", picture);
 
   console.log("answer", answer);
   return answer;
@@ -1153,3 +1145,84 @@ const solution92 = (n: number, k: number) => {
 
 solution92(10, 3);
 solution92(15, 5);
+
+const solution93 = (num_list: number[]) =>
+  num_list.sort((a, b) => a - b).splice(0, 5);
+solution93([12, 4, 15, 46, 38, 1, 14]);
+
+const solution94 = (n: number) => {
+  let answer = 0;
+  if (n % 2 !== 0) {
+    for (let i = 1; i <= n; i++) {
+      i % 2 !== 0 ? (answer += i) : 0;
+    }
+  } else {
+    for (let i = 1; i <= n; i++) {
+      i % 2 === 0 ? (answer += Math.pow(i, 2)) : 0;
+    }
+  }
+  console.log("answer", answer);
+  return answer;
+};
+
+solution94(7);
+solution94(10);
+
+const solution95 = (arr: number[], idx: number) => {
+  let answer = 0;
+  // arr.forEach((el: number, index: number) => {
+  //   console.log("same", idx <= index && el === 1);
+  //   if (idx <= index) {
+  //     if (el === 1) answer = 3;
+  //     else answer = -1;
+  //   } else {
+  //     return (answer = -1);
+  //   }
+  // });
+
+  for (let i = 1; i <= arr.length; i++) {
+    if (idx <= i && arr[i] === 1) {
+      if (arr[i] === 1) answer = 3;
+    } else {
+      answer = -1;
+    }
+  }
+  console.log("answer", answer);
+  return answer;
+};
+
+solution95([0, 0, 0, 1], 1);
+solution95([1, 0, 0, 1, 0, 0], 4);
+solution95([1, 1, 1, 1, 0], 3);
+
+// 조건에 맞게 수열 변환하기 1
+const solution96 = (arr: number[]) => {
+  let answer: number[] = [];
+  arr.forEach((el: number) => {
+    if (el >= 50 && el % 2 === 0) {
+      answer.push(el / 2);
+    } else if (el < 50 && el % 2 !== 0) {
+      answer.push(el * 2);
+    } else {
+      answer.push(el);
+    }
+  });
+  console.log("answer", answer);
+  return answer;
+};
+
+solution96([1, 2, 3, 100, 99, 98]);
+
+// 5명씩
+const solution97 = (names: string[]) => {
+  let answer: string[] = [];
+
+  for (let i = 0; i < names.length; i += 5) {
+    answer.push(names[i]);
+  }
+
+  console.log("answer", answer);
+  return answer;
+};
+
+solution97(["nami", "ahri", "jayce", "garen", "ivern", "vex", "jinx"]);
