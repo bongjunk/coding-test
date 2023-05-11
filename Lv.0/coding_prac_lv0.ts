@@ -1295,3 +1295,49 @@ const solution103 = (numbers: number[], num1: number, num2: number) => {
 
 solution103([1, 2, 3, 4, 5], 1, 3);
 solution103([1, 3, 5], 1, 2);
+
+// 짝수 홀수 개수
+const solution104 = (num_list: any[]) => {
+  let answer: any[] = [];
+  let evenCount = 0;
+  let oddCount = 0;
+  for (let i = 0; i < num_list.length; i++) {
+    num_list[i] % 2 === 0 ? evenCount++ : oddCount++;
+  }
+  answer.push(evenCount, oddCount);
+  console.log("answer", answer);
+  return answer;
+};
+
+solution104([1, 2, 3, 4, 5]);
+solution104([1, 3, 5, 7]);
+
+const solution105 = (numbers: any[], direction: string) => {
+  let answer: number[] = [];
+  if (direction === "right") {
+    numbers.unshift(numbers.pop());
+    answer.push(...numbers);
+  } else {
+    numbers.push(numbers.shift());
+    answer.push(...numbers);
+  }
+  console.log("answer", answer);
+  return answer;
+};
+
+solution105([1, 2, 3], "right");
+solution105([4, 455, 6, 4, -1, 45, 6], "left");
+
+// 짝수의 합
+const solution106 = (n: number) => {
+  let answer = 0;
+  for (let i = 0; i <= n; i++) {
+    if (i % 2 === 0) {
+      answer += i;
+    }
+  }
+  return answer;
+};
+
+solution106(10); // 30
+solution106(4); // 6
