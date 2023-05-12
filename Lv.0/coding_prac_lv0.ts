@@ -864,18 +864,6 @@ const solution77 = (my_string: string) => {
 solution77("cccCCC");
 solution77("abCdEfghIJ");
 
-// const solution = (my_string) => {
-//   let answer = "";
-//   my_string.split("").map((el, idx) => {
-//     if (el === el.toLowerCase()) {
-//       answer += el.toUpperCase();
-//     } else {
-//       answer += el.toLowerCase();
-//     }
-//   });
-//   return answer;
-// };
-
 const solution78 = (num_list: any) => {
   let answer = 0;
   num_list.map((el: any) => {
@@ -1341,3 +1329,142 @@ const solution106 = (n: number) => {
 
 solution106(10); // 30
 solution106(4); // 6
+
+// 아이스 아메리카노
+const solution107 = (money: number) => {
+  let answer: number[] = [];
+  const price = 5500;
+  const cnt = Math.floor(money / price);
+  const rem = money - price * cnt;
+  answer.push(cnt, rem);
+  console.log("answer", answer);
+  return answer;
+};
+
+solution107(5500);
+solution107(15000);
+
+const solution108 = (arr: number[], n: number) => {
+  let answer: number[] = [];
+  console.log(arr.length % 2 === 0);
+  if (arr.length % 2 !== 0) {
+    arr.map((el: any, idx: number) => {
+      answer.push(idx % 2 === 0 && el + n);
+    });
+  } else {
+    arr.map((el: any, idx: number) => {
+      answer.push(el);
+    });
+  }
+  console.log("arr", arr);
+  console.log("answer", answer);
+  return answer;
+};
+
+solution108([49, 12, 100, 276, 33], 27);
+solution108([444, 555, 666, 777], 100);
+
+const solution109 = (common: number[]) => {
+  let answer = 0;
+  // common[1] - common[0] === common[2] - common[1]
+  common[1] - common[0] === common[2] - common[1]
+    ? (answer = common[common.length - 1] + (common[1] - common[0]))
+    : (answer = common[common.length - 1] * (common[1] / common[0]));
+  return answer;
+};
+
+solution109([1, 2, 3, 4]);
+solution109([2, 4, 8]);
+
+// 제곱수 판별하기
+const solution110 = (n: number) => {
+  let answer = 0;
+  answer = Math.sqrt(n) % 1 === 0 ? 1 : 2;
+  // console.log("isInteger", Number.isInteger(Math.sqrt(n)));
+  console.log("answer", answer);
+  return answer;
+};
+
+solution110(144);
+solution110(976);
+
+// 약수 구하기
+const solution111 = (n: number) => {
+  let answer: number[] = [];
+  for (let i = 1; i <= n; i++) {
+    n % i === 0 && answer.push(i);
+  }
+  console.log("answer", answer);
+  return answer;
+};
+
+solution111(24);
+solution111(29);
+
+// 영어가 싫어요
+const solution112 = (numbers: any) => {
+  let answer = 0;
+
+  const num = [
+    "zero",
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight",
+    "nine",
+  ];
+
+  num.forEach((el: any, idx: number) => {
+    console.log("numbers.split(el)", numbers.split(el).join(idx));
+    numbers = numbers.split(el).join(idx);
+    answer = Number(numbers);
+  });
+  console.log("answer", answer);
+  return answer;
+};
+
+solution112("onetwothreefourfivesixseveneightnine");
+solution112("onefourzerosixseven");
+
+// 문자열 정렬하기 (2)
+const solution113 = (my_string: string) => {
+  let answer = "";
+  answer = my_string.toLowerCase().split("").sort().join("");
+  console.log("answer", answer);
+  return answer;
+};
+
+solution113("Bcad"); // abcd
+solution113("heLLo"); // ehllo
+solution113("Python"); // hnopty
+
+// 문자열 계산하기
+const solution114 = (my_string: any) => {
+  return Function(`return ${my_string}`)();
+};
+
+solution114("3 + 4");
+
+// 특정 문자열로 끝나는 가장 긴 부분 문자열 찾기
+const solution115 = (myString: any, pat: any) => {
+  let answer = "";
+  // console.log(myString.split("").splice(0,));
+  for (let i = 0; i < myString.length; i++) {
+    console.log("i", i);
+    // console.log(myString.lastIndexOf(pat)[i].length);
+    console.log(myString[i], pat.length);
+  }
+  console.log(
+    "pat",
+    myString.indexOf(pat),
+    myString.substring(0, myString.lastIndexOf(pat.split("").length))
+  );
+  return answer;
+};
+
+solution115("AbCdEFG", "dE");
+solution115("AAAAaaaa", "a");
