@@ -1468,3 +1468,11 @@ const solution115 = (myString: any, pat: any) => {
 
 solution115("AbCdEFG", "dE");
 solution115("AAAAaaaa", "a");
+
+const solution116 = (myString, pat) => {
+  let answer = 0;
+  return answer;
+};
+
+solution116("ABBAA", "AABB");
+solution116("ABAB", "ABAB");
