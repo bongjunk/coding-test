@@ -1476,3 +1476,31 @@ const solution116 = (myString, pat) => {
 
 solution116("ABBAA", "AABB");
 solution116("ABAB", "ABAB");
+
+const solution43 = (numLog: any) => {
+  const controller = {
+    "1": "w",
+    "-1": "s",
+    "10": "d",
+    "-10": "a",
+  };
+  console.log(
+    "answer",
+    numLog
+      .slice(1)
+      .reduce(
+        (acc: any, cur: any, idx: any) =>
+          acc + controller[`${numLog[idx + 1] - numLog[idx]}`],
+        ""
+      )
+  );
+  return numLog
+    .slice(1)
+    .reduce(
+      (acc: any, cur: any, idx: any) =>
+        acc + controller[`${numLog[idx + 1] - numLog[idx]}`],
+      ""
+    );
+};
+
+solution43([0, 1, 0, 10, 0, 1, 0, 10, 0, -1, -2, -1]);
