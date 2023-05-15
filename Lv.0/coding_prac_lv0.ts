@@ -1540,9 +1540,16 @@ const solution119 = (slice: number, n: number) => {
 solution119(7, 10);
 solution119(4, 12);
 
+// 피자 나눠 먹기 (2)
 const solution120 = (n: number) => {
-  let answer = 0;
-  console.log("slice", Math.ceil(6 / n));
+  let answer = 6;
+  console.log("slice", Math.ceil((n - 1) * 6) / n);
+  console.log("", n % 6 === 0);
+  while (n % 6 !== 0) {
+    answer += 6;
+    break;
+  }
+  console.log("answer123", Math.ceil(answer / 6));
   return answer;
 };
 
