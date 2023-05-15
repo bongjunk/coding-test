@@ -864,11 +864,21 @@ const solution77 = (my_string: string) => {
 solution77("cccCCC");
 solution77("abCdEfghIJ");
 
+// 이어 붙인 수
 const solution78 = (num_list: any) => {
   let answer = 0;
+  let even = "";
+  let odd = "";
+
   num_list.map((el: any) => {
-    return el % 2 === 1 ? (answer = el) : null;
+    if (el % 2 === 1) {
+      odd += el;
+    } else {
+      even += el;
+    }
   });
+
+  answer = Number(even) + Number(odd);
   console.log("answer", answer);
   return answer;
 };
@@ -1116,27 +1126,12 @@ const solution94 = (n: number) => {
 solution94(7);
 solution94(10);
 
+// 가까운 1 찾기
 const solution95 = (arr: number[], idx: number) => {
-  let answer = 0;
-  // arr.forEach((el: number, index: number) => {
-  //   console.log("same", idx <= index && el === 1);
-  //   if (idx <= index) {
-  //     if (el === 1) answer = 3;
-  //     else answer = -1;
-  //   } else {
-  //     return (answer = -1);
-  //   }
-  // });
-
-  for (let i = 1; i <= arr.length; i++) {
-    if (idx <= i && arr[i] === 1) {
-      if (arr[i] === 1) answer = 3;
-    } else {
-      answer = -1;
-    }
+  for (let i = idx; i < arr.length; i++) {
+    if (arr[i] === 1) return i;
   }
-  console.log("answer", answer);
-  return answer;
+  return -1;
 };
 
 solution95([0, 0, 0, 1], 1);
@@ -1240,14 +1235,11 @@ solution100(999);
 const solution101 = (n: number, k: number) => {
   let answer = 0;
   const service = Math.floor(n / 10);
-  // console.log("titlTest", ~~(n / 10));
-  // console.log("test", ~~-12.6, Math.floor(-12.6));
   if (n >= 10) {
     answer = n * 12000 + (k - service) * 2000;
   } else {
     answer = n * 12000 + k * 2000;
   }
-  console.log("service", service);
   console.log("answer", answer);
   return answer;
 };
@@ -1366,7 +1358,6 @@ solution108([444, 555, 666, 777], 100);
 
 const solution109 = (common: number[]) => {
   let answer = 0;
-  // common[1] - common[0] === common[2] - common[1]
   common[1] - common[0] === common[2] - common[1]
     ? (answer = common[common.length - 1] + (common[1] - common[0]))
     : (answer = common[common.length - 1] * (common[1] / common[0]));
@@ -1380,7 +1371,6 @@ solution109([2, 4, 8]);
 const solution110 = (n: number) => {
   let answer = 0;
   answer = Math.sqrt(n) % 1 === 0 ? 1 : 2;
-  // console.log("isInteger", Number.isInteger(Math.sqrt(n)));
   console.log("answer", answer);
   return answer;
 };
@@ -1419,7 +1409,6 @@ const solution112 = (numbers: any) => {
   ];
 
   num.forEach((el: any, idx: number) => {
-    console.log("numbers.split(el)", numbers.split(el).join(idx));
     numbers = numbers.split(el).join(idx);
     answer = Number(numbers);
   });
@@ -1469,38 +1458,94 @@ const solution115 = (myString: any, pat: any) => {
 solution115("AbCdEFG", "dE");
 solution115("AAAAaaaa", "a");
 
-const solution116 = (myString, pat) => {
-  let answer = 0;
+// const solution116 = (myString, pat) => {
+//   let answer = 0;
+//   return answer;
+// };
+
+// solution116("ABBAA", "AABB");
+// solution116("ABAB", "ABAB");
+
+// const solution43 = (numLog: any) => {
+//   let answer = "";
+//   const controller = {
+//     "1": "w",
+//     "-1": "s",
+//     "10": "d",
+//     "-10": "a",
+//   };
+//   // console.log(
+//   //   "answer",
+//   //   numLog
+//   //     .slice(1)
+//   //     .reduce(
+//   //       (acc: any, cur: any, idx: any) =>
+//   //         acc + controller[`${numLog[idx + 1] - numLog[idx]}`],
+//   //       ""
+//   //     )
+//   // );
+//   console.log(
+//     numLog
+//       .slice(1)
+//       .reduce(
+//         (acc: any, cur: any, idx: any) =>
+//           acc + controller[`${numLog[idx + 1] - numLog[idx]}`],
+//         ""
+//       )
+//   );
+
+//   return answer;
+// };
+
+// solution43([0, 1, 0, 10, 0, 1, 0, 10, 0, -1, -2, -1]);
+
+// 옷가게 할인 받기
+const solution117 = (price: number) => {
+  console.log("price", price);
+  let answer: number = 0;
+  if (price >= 500000) {
+    answer = price - Math.floor((20 * price) / 100);
+  } else if (price >= 300000 && price < 500000) {
+    answer = price - Math.floor((10 * price) / 100);
+  } else if (price >= 100000 && price < 3000000) {
+    answer = price - Math.floor((5 * price) / 100);
+  } else {
+    answer = price;
+  }
+
+  console.log("answer", answer);
   return answer;
 };
 
-solution116("ABBAA", "AABB");
-solution116("ABAB", "ABAB");
+solution117(150000);
+solution117(580000);
 
-const solution43 = (numLog: any) => {
-  const controller = {
-    "1": "w",
-    "-1": "s",
-    "10": "d",
-    "-10": "a",
-  };
-  console.log(
-    "answer",
-    numLog
-      .slice(1)
-      .reduce(
-        (acc: any, cur: any, idx: any) =>
-          acc + controller[`${numLog[idx + 1] - numLog[idx]}`],
-        ""
-      )
-  );
-  return numLog
-    .slice(1)
-    .reduce(
-      (acc: any, cur: any, idx: any) =>
-        acc + controller[`${numLog[idx + 1] - numLog[idx]}`],
-      ""
-    );
+const solution118 = (my_string: any, n: number) => {
+  let answer: any = "";
+  [...my_string].forEach((el) => (answer += el.repeat(n)));
+  console.log("answer", answer);
+  return answer;
 };
 
-solution43([0, 1, 0, 10, 0, 1, 0, 10, 0, -1, -2, -1]);
+solution118("hello", 3);
+
+// 피자 나눠 먹기 (3)
+const solution119 = (slice: number, n: number) => {
+  let answer = 0;
+  answer = Math.ceil(n / slice);
+  console.log("answer", answer);
+  return answer;
+};
+
+solution119(7, 10);
+solution119(4, 12);
+
+const solution120 = (n: number) => {
+  let answer = 0;
+  console.log("slice", Math.ceil(6 / n));
+  return answer;
+};
+
+solution120(6);
+solution120(10);
+solution120(4);
