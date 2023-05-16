@@ -1,6 +1,6 @@
 const solution22 = (numer1: any, denom1: any, numer2: any, denom2: any) => {
   let answer: any = [];
-  console.log(Number(`${numer1} / ${denom1} + ${numer2} / ${denom2}`));
+  answer.push(Number(`${numer1} / ${denom1} + ${numer2} / ${denom2}`));
   return answer;
 };
 
@@ -1543,16 +1543,51 @@ solution119(4, 12);
 // 피자 나눠 먹기 (2)
 const solution120 = (n: number) => {
   let answer = 6;
-  console.log("slice", Math.ceil((n - 1) * 6) / n);
   console.log("", n % 6 === 0);
-  while (n % 6 !== 0) {
+  while (answer % n !== 0) {
     answer += 6;
-    break;
   }
-  console.log("answer123", Math.ceil(answer / 6));
-  return answer;
+  console.log("answer", answer);
+  return Math.ceil(answer / 6);
 };
 
 solution120(6);
 solution120(10);
 solution120(4);
+
+const solution121 = (array: any[]) => {
+  let answer = 0;
+  const maxObj: any = {};
+  array.length === 1 && array[0];
+  array.forEach((el) => {
+    // if (maxObj[el]) {
+    //   maxObj[el] += 1;
+    // } else {
+    //   maxObj[el] = 1;
+    // }
+    maxObj[el] ? (maxObj[el] += 1) : (maxObj[el] = 1);
+  });
+
+  let mathMax: any = maxObj[Object.keys(maxObj)[0]];
+
+  Object.keys(maxObj).forEach((element: any, idx: any) => {
+    console.log("element", element);
+    if (Number(Object.values(maxObj)[idx]) > mathMax) {
+      console.log("13213", element);
+      mathMax = element;
+    } else if (Number(Object.values(maxObj)[idx]) === mathMax) {
+      mathMax = -1;
+    }
+    console.log("ellen", element.length);
+  });
+
+  console.log("mathMax", mathMax);
+  console.log("entries", Object.entries(maxObj));
+  console.log("maxObj", maxObj);
+  console.log("answer", answer);
+  return answer;
+};
+
+solution121([1, 2, 3, 3, 3, 4]); // 3
+solution121([1, 1, 2, 2]); // -1
+solution121([1]); // 1
