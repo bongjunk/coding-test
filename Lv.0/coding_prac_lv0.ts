@@ -1543,7 +1543,6 @@ solution119(4, 12);
 // 피자 나눠 먹기 (2)
 const solution120 = (n: number) => {
   let answer = 6;
-  console.log("", n % 6 === 0);
   while (answer % n !== 0) {
     answer += 6;
   }
@@ -1555,35 +1554,49 @@ solution120(6);
 solution120(10);
 solution120(4);
 
+// 최빈값 구하기
 const solution121 = (array: any[]) => {
   let answer = 0;
   const maxObj: any = {};
-  array.length === 1 && array[0];
+  array.sort((a, b) => a - b);
   array.forEach((el) => {
-    // if (maxObj[el]) {
-    //   maxObj[el] += 1;
-    // } else {
-    //   maxObj[el] = 1;
-    // }
-    maxObj[el] ? (maxObj[el] += 1) : (maxObj[el] = 1);
-  });
-
-  let mathMax: any = maxObj[Object.keys(maxObj)[0]];
-
-  Object.keys(maxObj).forEach((element: any, idx: any) => {
-    console.log("element", element);
-    if (Number(Object.values(maxObj)[idx]) > mathMax) {
-      console.log("13213", element);
-      mathMax = element;
-    } else if (Number(Object.values(maxObj)[idx]) === mathMax) {
-      mathMax = -1;
+    console.log("el", el);
+    if (el === 0) {
+      return null;
     }
-    console.log("ellen", element.length);
+    el !== 0 && maxObj[el] ? (maxObj[el] += 1) : (maxObj[el] = 1);
+    console.log("maxObj[el]", maxObj[el]);
   });
 
-  console.log("mathMax", mathMax);
-  console.log("entries", Object.entries(maxObj));
+  console.log("array", array);
   console.log("maxObj", maxObj);
+  let mathMax: any = maxObj[Object.keys(maxObj)[0]];
+  let mode = Object.values(maxObj).sort((a: any, b: any) => b - a);
+  console.log("mode", mode);
+  Object.keys(maxObj).forEach((element: any, idx: any) => {
+    // if (mode[0] === 0) {
+    //   console.log("mode[0]", mode[0]);
+    //   mathMax = 1;
+    // } else if (mode[0] === mode[1]) {
+    //   mathMax = -1;
+    // } else if (Number(Object.values(maxObj)[idx]) > mathMax) {
+    //   mathMax = mode[0];
+    // } else if (mode.length === 1) {
+    //   mathMax = element;
+    // }
+    // if () {
+
+    // }
+    if (mode[0] === mode[1]) {
+      mathMax = -1;
+    } else if (Number(Object.values(maxObj)[idx]) > mathMax) {
+      mathMax = element;
+    }
+    console.log("lengthl123123l", Number(Object.values(maxObj)[idx]));
+    console.log("lengthll", Number(Object.values(maxObj)[idx]) > mathMax);
+  });
+  answer = Number(mathMax);
+  console.log("mathMax", mathMax);
   console.log("answer", answer);
   return answer;
 };
@@ -1591,3 +1604,7 @@ const solution121 = (array: any[]) => {
 solution121([1, 2, 3, 3, 3, 4]); // 3
 solution121([1, 1, 2, 2]); // -1
 solution121([1]); // 1
+solution121([1, 1, 1]);
+solution121([0, 1, 0, 0, 1, 1]);
+solution121([0, 0, 0, 1]);
+solution121([0]);
