@@ -1558,45 +1558,33 @@ solution120(4);
 const solution121 = (array: any[]) => {
   let answer = 0;
   const maxObj: any = {};
+  // console.log("includes", maxObj.incldues("0"));
+  // const maxOb = new Array(Math.max(...array)).fill(0);
   array.sort((a, b) => a - b);
   array.forEach((el) => {
-    console.log("el", el);
-    if (el === 0) {
-      return null;
-    }
-    el !== 0 && maxObj[el] ? (maxObj[el] += 1) : (maxObj[el] = 1);
-    console.log("maxObj[el]", maxObj[el]);
+    maxObj[el] ? (maxObj[el] += 1) : (maxObj[el] = 1);
+    // maxOb[el] ? (maxOb[el] += 1) : (maxOb[el] = 1);
   });
 
-  console.log("array", array);
-  console.log("maxObj", maxObj);
   let mathMax: any = maxObj[Object.keys(maxObj)[0]];
   let mode = Object.values(maxObj).sort((a: any, b: any) => b - a);
+  let mode2 = Object.keys(maxObj);
+  console.log("mode2", mode2);
   console.log("mode", mode);
   Object.keys(maxObj).forEach((element: any, idx: any) => {
-    // if (mode[0] === 0) {
-    //   console.log("mode[0]", mode[0]);
-    //   mathMax = 1;
-    // } else if (mode[0] === mode[1]) {
-    //   mathMax = -1;
-    // } else if (Number(Object.values(maxObj)[idx]) > mathMax) {
-    //   mathMax = mode[0];
-    // } else if (mode.length === 1) {
-    //   mathMax = element;
-    // }
-    // if () {
-
-    // }
-    if (mode[0] === mode[1]) {
+    console.log("element", element);
+    if (element === 0) return null;
+    if (mode[0] === 0) {
+      mathMax = 1;
+    } else if (mode[0] === mode[1]) {
       mathMax = -1;
     } else if (Number(Object.values(maxObj)[idx]) > mathMax) {
+      mathMax = mode[0];
+    } else if (mode.length === 1) {
       mathMax = element;
     }
-    console.log("lengthl123123l", Number(Object.values(maxObj)[idx]));
-    console.log("lengthll", Number(Object.values(maxObj)[idx]) > mathMax);
   });
   answer = Number(mathMax);
-  console.log("mathMax", mathMax);
   console.log("answer", answer);
   return answer;
 };
@@ -1608,3 +1596,84 @@ solution121([1, 1, 1]);
 solution121([0, 1, 0, 0, 1, 1]);
 solution121([0, 0, 0, 1]);
 solution121([0]);
+solution121([0, 0]);
+
+// 특정 문자 제거하기
+const solution122 = (my_string: string, letter: any) => {
+  let answer = "";
+  [...my_string].forEach((el) => {
+    if (el === letter) return null;
+    answer += el;
+  });
+  console.log("answer", answer);
+  return answer;
+};
+
+solution122("abcdef", "f");
+solution122("BCBdbe", "B");
+
+// 순서쌍의 개수
+const solution123 = (n: number) => {
+  let answer = 0;
+  for (let i = 0; i <= n; i++) {
+    if (n % i === 0) {
+      answer++;
+    }
+  }
+  console.log("answer", answer);
+  return answer;
+};
+
+solution123(20);
+solution123(100);
+
+// 숨어있는 숫자의 덧셈 (1)
+const solution124 = (my_string: any) => {
+  let answer = 0;
+  my_string.split("").map((el: any) => {
+    !isNaN(el) ? (answer += Number(el)) : 0;
+  });
+  console.log("answer", answer);
+  return answer;
+};
+
+solution124("aAb1B2cC34oOp");
+solution124("1a2b3c4d123");
+
+// 2차원으로 만들기
+const solution125 = (num_list: number[], n: number) => {
+  let answer: any = [];
+  for (let i = 0; i < num_list.length / n; i++) {
+    answer.push(num_list.slice(i * n, i * n + n));
+  }
+  console.log("answer", answer);
+  return answer;
+};
+
+solution125([1, 2, 3, 4, 5, 6, 7, 8], 2);
+
+// 최댓값 만들기 (1)
+const solution126 = (numbers: number[]) => {
+  let answer = 0;
+  numbers.sort((a, b) => b - a);
+  answer = numbers[0] * numbers[1];
+  console.log("answer", answer);
+  return answer;
+};
+
+solution126([1, 2, 3, 4, 5]);
+solution126([0, 31, 24, 10, 1, 9]);
+
+// 삼각형의 완성조건 (1)
+const solution127 = (sides: any) => {
+  let answer = 0;
+  console.log(Math.max(...sides));
+  const max = Math.max(...sides);
+  console.log(max, ...sides);
+  // console.log(max, rem);
+  return answer;
+};
+
+solution127([1, 2, 3]);
+solution127([3, 6, 2]);
+solution127([199, 72, 222]);
