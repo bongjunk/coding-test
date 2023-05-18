@@ -1667,13 +1667,37 @@ solution126([0, 31, 24, 10, 1, 9]);
 // 삼각형의 완성조건 (1)
 const solution127 = (sides: any) => {
   let answer = 0;
-  console.log(Math.max(...sides));
-  const max = Math.max(...sides);
-  console.log(max, ...sides);
-  // console.log(max, rem);
+  sides.sort((a: any, b: any) => b - a);
+  answer = sides[0] < sides[1] + sides[2] ? 1 : 2;
+  console.log("answer", answer);
   return answer;
 };
 
 solution127([1, 2, 3]);
 solution127([3, 6, 2]);
 solution127([199, 72, 222]);
+
+// 모음 제거
+const solution128 = (my_string: string) => {
+  let answer = "";
+  // const regExp = /["a","e","i","o","u"]/g;
+  // console.log("regExp ", regExp.test(my_string));
+
+  answer = my_string.replace(/["a","e","i","o","u"]/g, "");
+  console.log("answer", answer);
+  return answer;
+};
+
+solution128("bus");
+solution128("nice to meet you");
+
+// 원하는 문자열 찾기
+const solution129 = (my_string: any, pat: any) => {
+  let answer = 0;
+  answer = my_string.toLowerCase().includes(pat.toLowerCase()) ? 1 : 0;
+  console.log("answer", answer);
+  return answer;
+};
+
+solution129("AbCdEfG", "aBc");
+solution129("aaAA", "aaaaa");
