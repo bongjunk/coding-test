@@ -1701,3 +1701,16 @@ const solution129 = (my_string: any, pat: any) => {
 
 solution129("AbCdEfG", "aBc");
 solution129("aaAA", "aaaaa");
+
+// 접두사
+const solution130 = (my_string: string, is_prefix: string) => {
+  let answer = 0;
+  answer = my_string.indexOf(is_prefix) === 0 ? 1 : 0;
+  console.log("answer", answer);
+  return answer;
+};
+
+solution130("banana", "ban");
+solution130("banana", "nan");
+solution130("banana", "abcd");
+solution130("banana", "bananan");
