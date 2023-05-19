@@ -104,3 +104,52 @@ const solution137 = (arr: number[], n: number) => {
 
 solution137([49, 12, 100, 276, 33], 27);
 solution137([444, 555, 666, 777], 100);
+
+// 접미사 배열
+const solution138 = (my_string: any) => {
+  let answer: any = [];
+  const suf = [...my_string]
+    .reduce((acc, cur, idx) => {
+      return [...acc, my_string.slice(idx, my_string.length)];
+    }, [])
+    .sort();
+  answer.push(...suf);
+  console.log("answer", answer);
+  return answer;
+};
+
+solution138("banana"); // ["a", "ana", "anana", "banana", "na", "nana"]
+solution138("programmers"); // ["ammers", "ers", "grammers", "mers", "mmers", "ogrammers", "programmers", "rammers", "rogrammers", "rs", "s"]
+
+// function solution139(my_string) {
+//   const strLen = my_string.length;
+//   return [...my_string]
+//     .reduce((acc, cur, idx) => {
+//       const curStr = my_string.slice(idx, strLen);
+//       return [...acc, curStr];
+//     }, [])
+//     .sort();
+// }
+
+// solution139("banana");
+// solution139("programmers");
+
+// 합성수 찾기
+const solution139 = (n: number) => {
+  let answer = 0;
+  for (let i = 1; i <= n; i++) {
+    let cnt = 0;
+    for (let j = 1; j <= i; j++) {
+      if (i % j === 0) {
+        console.log("i", i);
+        cnt++;
+      }
+    }
+    cnt > 2 && answer++;
+  }
+  console.log("answer", answer);
+  return answer;
+};
+
+solution139(10);
+solution139(5);
