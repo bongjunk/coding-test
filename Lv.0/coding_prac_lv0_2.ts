@@ -153,3 +153,21 @@ const solution139 = (n: number) => {
 
 solution139(10);
 solution139(5);
+
+// 특별한 이차원 배열 2
+const solution130 = (arr: any) => {
+  let answer = 0;
+  return answer;
+};
+
+solution130([
+  [5, 192, 33],
+  [192, 72, 95],
+  [33, 95, 999],
+]);
+solution130([
+  [19, 498, 258, 587],
+  [63, 93, 7, 754],
+  [258, 7, 1000, 723],
+  [587, 754, 723, 81],
+]);
