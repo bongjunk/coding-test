@@ -155,19 +155,88 @@ solution139(10);
 solution139(5);
 
 // 특별한 이차원 배열 2
-const solution130 = (arr: any) => {
-  let answer = 0;
-  return answer;
+const solution140 = (arr: any) => {
+  let answer = true;
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr[i].length; j++) {
+      if (arr[i][j] !== arr[j][i]) {
+        answer = false;
+      }
+    }
+  }
+  console.log("answer", answer);
+  return ~~answer;
 };
 
-solution130([
+solution140([
   [5, 192, 33],
   [192, 72, 95],
   [33, 95, 999],
 ]);
-solution130([
+solution140([
   [19, 498, 258, 587],
   [63, 93, 7, 754],
   [258, 7, 1000, 723],
   [587, 754, 723, 81],
 ]);
+
+const solution141 = (arr: number[], intervals: any) => {
+  let answer: any = [];
+  intervals.forEach((el: any) => {
+    answer.push(...arr.slice(el[0], el[1] + 1));
+  });
+  console.log("answer", answer);
+  return answer;
+};
+
+solution141(
+  [1, 2, 3, 4, 5],
+  [
+    [1, 3],
+    [0, 4],
+  ]
+); // [2, 3, 4, 1, 2, 3, 4, 5]
+
+// 팩토리얼
+const solution142 = (n: number) => {
+  let answer = 1;
+  let prod = 1;
+  for (let i = 1; i <= n; i++) {
+    // console.log("i", i);
+    prod *= i;
+    if (n >= prod) {
+      answer = i;
+    }
+    if (n === prod) {
+      answer = i;
+    }
+  }
+  console.log("answer", answer);
+  return answer;
+};
+
+solution142(3628800);
+solution142(7);
+
+// 특별한 이차원 배열 1
+const solution143 = (n: any) => {
+  const arr = Array.from({ length: n }, () => Array(n).fill(0));
+  arr.map((el, idx) => {
+    console.log("el", el, "idx", idx, el[idx]);
+    el.map((element, index) => {
+      console.log("element", element);
+      // index === idx ? 1 : element;
+      if (index === idx) {
+        return (el[index] = 1);
+      } else {
+        return element;
+      }
+    });
+  });
+  console.log("arr", arr);
+  return arr;
+};
+
+solution143(3); // [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
+solution143(6); // [[1, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0], [0, 0, 0, 1, 0, 0], [0, 0, 0, 0, 1, 0], [0, 0, 0, 0, 0, 1]]
+solution143(1); // [[1]]
