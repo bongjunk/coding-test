@@ -240,3 +240,13 @@ const solution143 = (n: any) => {
 solution143(3); // [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
 solution143(6); // [[1, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0], [0, 0, 0, 1, 0, 0], [0, 0, 0, 0, 1, 0], [0, 0, 0, 0, 0, 1]]
 solution143(1); // [[1]]
+
+// 가까운 수
+const solution144 = (array: number[], n: number) => {
+  let answer = 0;
+  array;
+  return answer;
+};
+
+solution144([3, 10, 28], 20); // 28
+solution144([10, 11, 12], 13); // 12
