@@ -239,20 +239,33 @@ solution143(1); // [[1]]
 // 가까운 수
 const solution144 = (array: any, n: any) => {
   let answer = 0;
+  let min = 0;
+  let deg: any = [];
   array.sort((a: any, b: any) => a - b);
-  console.log("answer", answer);
-  const deg: any = [];
 
-  const min = Math.min(...deg);
   array.forEach((el: any, idx: number) => {
-    console.log("el", el);
-    deg.push(Math.abs(n - el));
+    deg.push(Math.abs(n - el[idx]));
+    min = Math.min(...deg);
+    answer = deg.indexOf(min);
   });
 
-  console.log("12312ㄹㄹㄷㄹ3", deg.indexOf(min));
-  console.log("deg", deg, "min", min);
-  return answer;
+  return array[answer];
 };
 
 solution144([3, 10, 28], 20); // 28
 solution144([10, 11, 12], 13); // 12
+
+// 등차수열의 특정한 항만 더하기
+const solution145 = (a: any, d: any, included: boolean[]) => {
+  let answer = 0;
+  let arr: any = [];
+  // arr.push(a, (a += d));
+  console.log("arr", arr);
+  for (let i = a; i <= included.length; i += d) {
+    console.log("i", i);
+  }
+  return answer;
+};
+
+solution145(3, 4, [true, false, false, true, true]);
+solution145(7, 1, [false, false, false, true, false, false, false]);
