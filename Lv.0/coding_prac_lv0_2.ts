@@ -141,7 +141,6 @@ const solution139 = (n: number) => {
     let cnt = 0;
     for (let j = 1; j <= i; j++) {
       if (i % j === 0) {
-        console.log("i", i);
         cnt++;
       }
     }
@@ -202,7 +201,6 @@ const solution142 = (n: number) => {
   let answer = 1;
   let prod = 1;
   for (let i = 1; i <= n; i++) {
-    // console.log("i", i);
     prod *= i;
     if (n >= prod) {
       answer = i;
@@ -222,10 +220,7 @@ solution142(7);
 const solution143 = (n: any) => {
   const arr = Array.from({ length: n }, () => Array(n).fill(0));
   arr.map((el, idx) => {
-    console.log("el", el, "idx", idx, el[idx]);
     el.map((element, index) => {
-      console.log("element", element);
-      // index === idx ? 1 : element;
       if (index === idx) {
         return (el[index] = 1);
       } else {
@@ -242,9 +237,20 @@ solution143(6); // [[1, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0], 
 solution143(1); // [[1]]
 
 // 가까운 수
-const solution144 = (array: number[], n: number) => {
+const solution144 = (array: any, n: any) => {
   let answer = 0;
-  array;
+  array.sort((a: any, b: any) => a - b);
+  console.log("answer", answer);
+  const deg: any = [];
+
+  const min = Math.min(...deg);
+  array.forEach((el: any, idx: number) => {
+    console.log("el", el);
+    deg.push(Math.abs(n - el));
+  });
+
+  console.log("12312ㄹㄹㄷㄹ3", deg.indexOf(min));
+  console.log("deg", deg, "min", min);
   return answer;
 };
 
