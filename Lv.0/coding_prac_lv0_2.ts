@@ -261,7 +261,7 @@ const solution145 = (a: any, d: any, included: boolean[]) => {
   let arr: any = [];
   // arr.push(a, (a += d));
   console.log("arr", arr);
-  for (let i = a; i <= included.length; i += d) {
+  for (let i = 1; i <= included.length; i++) {
     console.log("i", i);
   }
   return answer;
@@ -269,3 +269,33 @@ const solution145 = (a: any, d: any, included: boolean[]) => {
 
 solution145(3, 4, [true, false, false, true, true]);
 solution145(7, 1, [false, false, false, true, false, false, false]);
+
+// 진료 순서 정하기
+const solution146 = (emergency: any) => {
+  let answer: any = [];
+  emergency.map(
+    (el: any) =>
+      emergency
+        .slice()
+        .sort((a: any, b: any) => b - a)
+        .indexOf(el) + 1
+  );
+  return answer;
+};
+
+solution146([3, 76, 24]);
+solution146([1, 2, 3, 4, 5, 6, 7]);
+solution146([30, 10, 23, 6, 100]);
+
+// 문자열 잘라서 정렬하기
+const solution147 = (myString: string) => {
+  let answer: any = [];
+  myString
+    .split("x")
+    .sort()
+    .filter((el) => el !== null && el !== undefined && el !== "");
+  return answer;
+};
+
+solution147("axbxcxdx");
+solution147("dxccxbbbxaaaa");
