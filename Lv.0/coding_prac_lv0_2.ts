@@ -299,3 +299,82 @@ const solution147 = (myString: string) => {
 
 solution147("axbxcxdx");
 solution147("dxccxbbbxaaaa");
+
+// 수열과 구간 쿼리 3
+const solution148 = (arr: any, queries: any) => {
+  queries.map((el: any) => {
+    const [i, j] = el;
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  });
+  return arr;
+};
+
+solution148(
+  [0, 1, 2, 3, 4],
+  [
+    [0, 3],
+    [1, 2],
+    [1, 4],
+  ]
+); // [3, 4, 1, 0, 2]
+
+// 수 조작하기 2
+const solution149 = (numLog: any) => {
+  let answer = "";
+  const obj: any = {
+    "1": "w",
+    "-1": "s",
+    "10": "d",
+    "-10": "a",
+  };
+  console.log("obj", obj);
+
+  return numLog
+    .slice(1)
+    .reduce(
+      (acc: any, cur: any, idx: any) =>
+        acc + obj[numLog[idx + 1] - numLog[idx]],
+      ""
+    );
+};
+
+solution149([0, 1, 0, 10, 0, 1, 0, 10, 0, -1, -2, -1]);
+
+// 숨어있는 숫자의 덧셈 (2)
+const solution150 = (my_string: any) => {
+  let answer: any = 0;
+  console.log(my_string.split(""));
+  console.log(
+    "isNaN",
+    [...my_string].map((el: any) => {
+      !isNaN(el) ? (answer += Number(el)) : 0;
+    })
+  );
+
+  // if (isNaN(my_string.split(""))) {
+  //   console.log("my_string", my_string);
+  // }
+  console.log("answer", answer);
+  return answer;
+};
+
+solution150("aAb1B2cC34oOp");
+solution150("1a2b3c4d123Z");
+
+// 정수를 나선형으로 배치하기
+const solution151 = (n: any) => {
+  let answer: any = [[]];
+  const arr = Array.from({ length: n }, () => Array(n).fill(0));
+  // const arr2 = Array.from({ length: n }, () => Array(n).fill(0));
+  for (let i = 1; i <= n ** 2; i++) {
+    console.log("i", i);
+    arr.push([i]);
+  }
+  console.log("Math.sqrt(n)", n ** 2);
+  console.log("arr", arr);
+  console.log("answer", answer);
+  return answer;
+};
+
+solution151(4);
+solution151(5);
