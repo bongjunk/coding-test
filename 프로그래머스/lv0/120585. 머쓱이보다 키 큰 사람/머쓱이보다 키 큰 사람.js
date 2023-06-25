@@ -1,0 +1,1 @@
+const solution = (array, height) => array.filter((r) => r > height).length;
