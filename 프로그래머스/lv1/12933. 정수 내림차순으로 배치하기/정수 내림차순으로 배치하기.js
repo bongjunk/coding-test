@@ -1,0 +1,1 @@
+const solution = (n) => parseInt([...n.toString()].sort((a, b) => b - a).join(""));
